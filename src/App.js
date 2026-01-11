@@ -14,7 +14,10 @@ function generateallNewDice(){
 function App() {
   const [dice, setDice] = useState(generateallNewDice())
 
-  
+  function handleReRoll(){
+    setDice(generateallNewDice())
+  }
+
   const diceElements = dice.map(num => <Die number={num}/>)
 
   return (
@@ -23,6 +26,7 @@ function App() {
         {diceElements}
       </div>
       
+      <button className="re-roll" onClick={handleReRoll}>Re-Roll the dice</button>
     </main>
   );
 }
