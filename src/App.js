@@ -15,6 +15,10 @@ function generateallNewDice(){
 function App() {
   const [dice, setDice] = useState(generateallNewDice())
 
+  if(dice.every(die => die.isHeld) && dice.every(die => die.value === dice[0].value)){
+    console.log("game won")
+  }
+
   function handleReRoll(){
     setDice(prevDice => 
       prevDice.map(prevDie => {
