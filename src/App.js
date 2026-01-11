@@ -1,18 +1,26 @@
 import Die from "./components/Die.js"
+import {useState} from "react"
+
+function generateallNewDice(){
+    const randomNumbers = []
+
+    for(let i = 0; i < 10; i++){
+      const randomNumber = Math.floor(Math.random() * 6) + 1;
+      randomNumbers.push(randomNumber)
+    }
+    return randomNumbers
+  }
+
 function App() {
+  const [dice, setDice] = useState(generateallNewDice())
+
+  
+  const diceElements = dice.map(num => <Die number={num}/>)
+
   return (
     <main>
       <div className="dice-container">
-        <Die number={1}/>
-        <Die number={2}/>
-        <Die number={3}/>
-        <Die number={4}/>
-        <Die number={5}/>
-        <Die number={6}/>
-        <Die number={7}/>
-        <Die number={8}/>
-        <Die number={9}/>
-        <Die number={10}/>
+        {diceElements}
       </div>
       
     </main>
